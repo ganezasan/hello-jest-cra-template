@@ -1,0 +1,11 @@
+build
+dist
+node_modules
+storybook-static
+
+# E2E test recordings
+videos
+
+# jest-junit and jest coverage
+reports
+junit.xml
