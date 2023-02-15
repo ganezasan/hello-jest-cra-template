@@ -1,4 +1,3 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
@@ -17,16 +16,13 @@ module.exports = {
   features: {
     interactionsDebugger: true
   },
-  webpackFinal: async (config) => {
-    config.resolve.plugins = [
-      ...(config.resolve.plugins || []),
-      new TsconfigPathsPlugin({
-        extensions: config.resolve.extensions,
-      }),
-    ]
+  webpackFinal: config => {
     config.module.rules.push({
-      test: /.storybook\/preview.ts/,
-      resolve: { fullySpecified: false },
+      test: /\.(m?js)$/,
+      type: "javascript/auto",
+      resolve: {
+        fullySpecified: false,
+      },
     })
     return config
   },
