@@ -1,5 +1,5 @@
 {
-  "name": "hello-jest-frontend-template",
+  "name": "hello-jest-cra-template",
   "version": "0.1.0",
   "private": true,
   "type": "module",
