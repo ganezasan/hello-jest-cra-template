@@ -22,13 +22,15 @@ jobs:
           name: Run lint
           command: npm run lint
       - run:
+          name: Build storybook
+          command: npm run build-storybook
+      - run:
           name: Run Test
-          command: |
-            npm test
-      - store_test_results:
-          path: reports/jest
+          command: npm run ci-test
       - store_artifacts:
-          path: reports/coverage
+          path: reports
+      - store_artifacts:
+          path: storybook-static
 workflows:
   test:
     jobs:
