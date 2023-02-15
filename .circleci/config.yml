@@ -29,6 +29,8 @@ jobs:
           command: npm run ci-test
       - store_artifacts:
           path: reports
+      - store_test_results:
+          path: reports/jest
       - store_artifacts:
           path: storybook-static
 workflows:
