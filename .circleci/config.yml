@@ -1,0 +1,35 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: cimg/node:18.14.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v1-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run Format
+          command: npm run format
+      - run:
+          name: Run lint
+          command: npm run lint
+      - run:
+          name: Run Test
+          command: |
+            npm test
+      - store_test_results:
+          path: reports/jest
+      - store_artifacts:
+          path: reports/coverage
+workflows:
+  test:
+    jobs:
+      - test

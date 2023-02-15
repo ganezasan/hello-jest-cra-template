@@ -15,9 +15,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepare": "husky install",
-    "pretest": "npm run lint && npm run format",
     "lint": "eslint src",
-    "format": "prettier --write src",
+    "format": "prettier -l src",
     "lint-staged": "lint-staged --allow-empty"
   },
   "browserslist": {
